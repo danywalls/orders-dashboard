@@ -1,0 +1,49 @@
+<div class="dashboard-container">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-content">
+      <h3>Orders Dashboard</h3>
+      <ul class="nav-menu">
+        <li><a href="#" class="active">Dashboard</a></li>
+        <li><a href="#">Orders</a></li>
+        <li><a href="#">Customers</a></li>
+        <li><a href="#">Reports</a></li>
+        <li><a href="#">Settings</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <kendo-toolbar>
+      <kendo-toolbar-button text="New Order" themeColor="primary" (click)="createNewOrder()">
+      </kendo-toolbar-button>
+      <kendo-toolbar-spacer></kendo-toolbar-spacer>
+      <span>
+        <span class="dashboard-title">Orders Overview</span>
+      </span>
+    </kendo-toolbar>
+
+    <div class="grid-container">
+      <kendo-grid [data]="orders" [pageSize]="10" [pageable]="true" [sortable]="true" [filterable]="true"
+        [resizable]="true" [reorderable]="true">
+        <kendo-grid-column field="id" title="ID" [width]="80"></kendo-grid-column>
+        <kendo-grid-column field="customer" title="Customer" [width]="200"></kendo-grid-column>
+        <kendo-grid-column field="date" title="Date" [width]="120" format="{0:d}"></kendo-grid-column>
+        <kendo-grid-column field="status" title="Status" [width]="120">
+          <ng-template kendoGridFilterMenuTemplate let-filter let-column="column" let-filterService="filterService">
+            <kendo-dropdownlist [data]="statusCategories" [value]="filter?.filters[0]?.value"
+              (valueChange)="onStatusChange($event, filterService)">
+            </kendo-dropdownlist>
+          </ng-template>
+          <ng-template kendoGridCellTemplate let-dataItem>
+            <span [class]="'status-badge status-' + dataItem.status.toLowerCase()">
+              {{ dataItem.status }}
+            </span>
+          </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column field="total" title="Total" [width]="120" format="{0:c}"></kendo-grid-column>
+      </kendo-grid>
+    </div>
+  </div>
+</div>
