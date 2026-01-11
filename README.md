@@ -18,8 +18,6 @@ This dashboard showcases:
 This project includes a ready-to-use MCP configuration template at `.cursor/mcp.json.template` with:
 - **Angular CLI MCP** - For running Angular commands
 - **Kendo UI Generator MCP** - For generating Kendo UI components
-- **GitHub MCP** - For Git operations (optional)
-- **Context7 MCP** - For enhanced context (optional)
 
 ### Setup MCP
 
