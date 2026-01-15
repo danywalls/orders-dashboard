@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class ApiClient {
   private apiUrl = '/api';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   /**
    * Make a GET request

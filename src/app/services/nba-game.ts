@@ -18,7 +18,7 @@ export interface NBAGame {
 export class NbaGameService {
   private apiUrl = '/api/nba-games';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   /**
    * Get all NBA games
